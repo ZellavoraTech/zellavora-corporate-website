@@ -1,0 +1,30 @@
+<section id="tech" class="tech-section">
+    <div class="container">
+        <p class="tech-label tech-animate tech-animate--1">🚀 Trusted Technologies We Use</p>
+        <h2 class="tech-title tech-animate tech-animate--2">World-Class Tech Stack</h2>
+        <p class="tech-subtitle tech-animate tech-animate--3">Cutting-edge technologies powering our solutions in real-time</p>
+
+        <div class="tech-track-wrapper tech-animate tech-animate--4">
+            <div class="tech-track">
+                @for (tech of allTechs; track $index) {
+                <div class="tech-item" [attr.data-category]="tech.category">
+                    <div class="tech-item-inner">
+                        <div class="tech-icon">
+                            <img [src]="tech.icon" [alt]="tech.name" loading="lazy" />
+                        </div>
+                        <div class="tech-info">
+                            <h3 class="tech-name">{{ tech.name }}</h3>
+                            <p class="tech-category">{{ tech.category }}</p>
+                            <p class="tech-description">{{ tech.description }}</p>
+                            <span class="tech-status" [class.active]="tech.status === 'Active'">
+                                <span class="status-dot"></span>
+                                {{ tech.status }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

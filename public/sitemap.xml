@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://zellavora.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://zellavora.com/services</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://zellavora.com/services/cloud-solutions</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/services/custom-software</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/services/mobile-development</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/services/ai-ml</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/services/cybersecurity</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/services/devops-infrastructure</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/about</loc><priority>0.8</priority></url>
+  <url><loc>https://zellavora.com/contact</loc><priority>0.9</priority></url>
+  <url><loc>https://zellavora.com/blog</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://zellavora.com/blog/cloud-migration-playbook-2026</loc><priority>0.6</priority></url>
+  <url><loc>https://zellavora.com/blog/angular-zoneless-production</loc><priority>0.6</priority></url>
+  <url><loc>https://zellavora.com/blog/soc2-from-zero</loc><priority>0.6</priority></url>
+  <url><loc>https://zellavora.com/blog/rag-systems-evaluation</loc><priority>0.6</priority></url>
+  <url><loc>https://zellavora.com/faq</loc><priority>0.7</priority></url>
+  <url><loc>https://zellavora.com/privacy</loc><priority>0.3</priority></url>
+  <url><loc>https://zellavora.com/terms</loc><priority>0.3</priority></url>
+  <url><loc>https://zellavora.com/cookies</loc><priority>0.3</priority></url>
+</urlset>

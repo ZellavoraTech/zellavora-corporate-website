@@ -1,0 +1,5 @@
+{
+    "chat.agent.enabled": false,
+    "inlineChat.askInChat": false,
+    "inlineChat.fixDiagnostics": false
+}

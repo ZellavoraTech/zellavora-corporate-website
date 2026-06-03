@@ -1,0 +1,111 @@
+import { Component, Input, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-logo',
+  standalone: true,
+  imports: [RouterLink],
+  template: `
+    <a routerLink="/" class="logo" [class.logo--mark-only]="!showWordmark" aria-label="Zellavora — home">
+      <svg
+        class="logo__mark"
+        [attr.width]="size"
+        [attr.height]="size"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient [attr.id]="g0()" x1="-8.3131" y1="22.7411" x2="21.4621" y2="20.0233" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1367E3" /><stop offset="1" stop-color="#8148F7" />
+          </linearGradient>
+          <linearGradient [attr.id]="g1()" x1="4.62524" y1="13.6904" x2="22.3912" y2="12.7579" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1367E3" /><stop offset="1" stop-color="#7C4BF2" />
+          </linearGradient>
+          <linearGradient [attr.id]="g2()" x1="1.59867" y1="5.73523" x2="1.59867" y2="8.93256" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1367E3" /><stop offset="1" stop-color="#7C4BF2" />
+          </linearGradient>
+          <linearGradient [attr.id]="g3()" x1="9.01643" y1="8.1532" x2="9.01643" y2="10.1995" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1367E3" /><stop offset="1" stop-color="#7C4BF2" />
+          </linearGradient>
+          <linearGradient [attr.id]="g4()" x1="6.37862" y1="15.2273" x2="6.37862" y2="17.2736" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1367E3" /><stop offset="1" stop-color="#7C4BF2" />
+          </linearGradient>
+        </defs>
+        <path d="M13.3888 23.9401C13.6253 23.3112 13.7025 22.787 13.3888 22.0416L21.8018 22.1016L21.8618 20.6428H5.71521L14.4879 9.4921L15.7868 10.3314L9.05243 18.8643H18.5845L19.2639 16.4063L20.2031 15.607H21.4821V17.0458H20.4629L19.8634 19.164H23.1207L23.8001 19.7635V23.2806L23.1207 23.9401H13.3888Z" [attr.fill]="url0()"/>
+        <path d="M9.01254 10.1715L8.07332 9.41217L0.159912 19.8035V23.3206L0.799379 24H11.9101C11.6504 23.2696 11.6456 22.8493 11.9101 22.0816H2.5779L6.47465 17.1257L5.53543 16.4063L2.5779 19.5437L9.01254 10.1715Z" fill="#2969ED"/>
+        <path d="M12.9492 1.85846C13.2179 1.14049 13.2095 0.73805 12.9492 0.019989H23.6803V4.65613L15.8068 14.9276L14.7877 14.2481L21.4821 4.65613V3.25729L17.8651 7.55371L16.7261 6.69443L20.3431 1.85846H12.9492Z" [attr.fill]="url1()"/>
+        <path d="M11.5104 1.9184C11.1634 1.30903 11.123 0.905227 11.5104 0H0.959178C0.620662 0.0898258 0.513288 0.210571 0.459595 0.53955V4.57619C0.542402 5.01399 0.652785 5.1701 0.959178 5.29559H4.83595L4.51621 6.1149C4.26907 6.63528 4.11915 6.77066 3.83678 6.81432H2.9775V7.95337H4.83595C5.21551 7.83844 5.39279 7.70616 5.57533 7.21399L6.35468 5.29559H13.4488L9.0924 11.1107V13.1291L17.2056 3.29725H2.27808V1.9184H11.5104Z" fill="#2568DE"/>
+        <circle cx="1.59867" cy="7.3339" r="1.59867" [attr.fill]="url2()"/>
+        <circle cx="1.59865" cy="7.33388" r="0.799334" fill="white"/>
+        <circle cx="16.6661" cy="7.83347" r="1.27893" fill="#6252EE"/>
+        <circle cx="16.6661" cy="7.83347" r="0.639467" fill="white"/>
+        <circle cx="14.7477" cy="15.4272" r="1.27893" fill="#6252EE"/>
+        <circle cx="14.7477" cy="15.4272" r="0.639467" fill="white"/>
+        <circle cx="22.5492" cy="16.2744" r="1.40683" fill="#7A4CF2"/>
+        <circle cx="22.5492" cy="16.2744" r="0.703414" fill="white"/>
+        <circle cx="9.01643" cy="9.17635" r="1.02315" [attr.fill]="url3()"/>
+        <circle cx="9.01633" cy="9.17637" r="0.511574" fill="white"/>
+        <circle cx="6.37862" cy="16.2504" r="1.02315" [attr.fill]="url4()"/>
+        <circle cx="6.37864" cy="16.2505" r="0.511574" fill="white"/>
+      </svg>
+      @if (showWordmark) {
+        <span class="logo__wordmark">Zellavora</span>
+      }
+    </a>
+  `,
+  styles: [
+    `
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        text-decoration: none;
+        line-height: 1;
+        transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .logo:hover {
+        transform: translateY(-1px);
+      }
+      .logo__mark {
+        display: block;
+        filter: drop-shadow(0 4px 14px rgba(59, 130, 246, 0.22));
+        transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 300ms ease;
+        will-change: transform;
+      }
+      .logo:hover .logo__mark {
+        transform: rotate(-6deg) scale(1.08);
+        filter: drop-shadow(0 6px 20px rgba(168, 85, 247, 0.35));
+      }
+      .logo__wordmark {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.3rem;
+        letter-spacing: -0.015em;
+        background: var(--gradient-primary);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    `,
+  ],
+})
+export class LogoComponent {
+  @Input() size = 30;
+  @Input() showWordmark = true;
+
+  private static seq = 0;
+  private readonly uid = signal(`zl-${++LogoComponent.seq}`);
+
+  readonly g0 = computed(() => `${this.uid()}-g0`);
+  readonly g1 = computed(() => `${this.uid()}-g1`);
+  readonly g2 = computed(() => `${this.uid()}-g2`);
+  readonly g3 = computed(() => `${this.uid()}-g3`);
+  readonly g4 = computed(() => `${this.uid()}-g4`);
+  readonly url0 = computed(() => `url(#${this.g0()})`);
+  readonly url1 = computed(() => `url(#${this.g1()})`);
+  readonly url2 = computed(() => `url(#${this.g2()})`);
+  readonly url3 = computed(() => `url(#${this.g3()})`);
+  readonly url4 = computed(() => `url(#${this.g4()})`);
+}

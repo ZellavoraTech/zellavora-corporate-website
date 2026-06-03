@@ -1,0 +1,27 @@
+// Angular Material 3 theme — Zellavora brand
+// Primary: deep blue (#1E3A8A), Tertiary: purple (#A855F7)
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$violet-palette,
+      ),
+      typography: (
+        plain-family: 'Inter, system-ui, sans-serif',
+        brand-family: 'Poppins, system-ui, sans-serif',
+        bold-weight: 700,
+        medium-weight: 600,
+        regular-weight: 400,
+      ),
+      density: 0,
+    )
+  );
+}
+
+body {
+  color-scheme: light;
+  margin: 0;
+}

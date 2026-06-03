@@ -1,0 +1,105 @@
+<div class="page">
+  <div class="brand">
+    <app-logo [size]="36"></app-logo>
+  </div>
+
+  <div class="icon-wrap" aria-hidden="true">
+    <div class="icon-wrap__ring"></div>
+    <div class="icon-wrap__inner">⚙️</div>
+  </div>
+
+  <h1>We're tuning things up</h1>
+  <p class="sub">
+    Our team is working hard to bring you something better.
+    The site will be back online shortly — hang tight!
+  </p>
+
+  <div class="card" role="status" aria-label="System status">
+    <div class="card__row">
+      <span class="card__label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+        </svg>
+        Status
+      </span>
+      <span class="badge badge--yellow">
+        <span class="badge__dot"></span>
+        Maintenance
+      </span>
+    </div>
+    <div class="card__row">
+      <span class="card__label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Security &amp; Infra
+      </span>
+      <span class="badge badge--green">
+        <span class="badge__dot"></span>
+        Operational
+      </span>
+    </div>
+    <div class="card__row">
+      <span class="card__label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        Web Services
+      </span>
+      <span class="badge badge--yellow">
+        <span class="badge__dot"></span>
+        Updating
+      </span>
+    </div>
+  </div>
+
+  <div class="progress" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress__header">
+      <span>Maintenance progress</span>
+      <span>72%</span>
+    </div>
+    <div class="progress__track">
+      <div class="progress__fill"></div>
+    </div>
+  </div>
+
+  <form class="notify" (submit)="handleNotify($event)" novalidate>
+    <input
+      class="notify__input"
+      type="email"
+      name="email"
+      placeholder="your&#64;email.com"
+      aria-label="Email address"
+      autocomplete="email"
+      [(ngModel)]="email"
+      required
+    />
+    <button class="notify__btn" type="submit" [disabled]="submitted">
+      {{ submitted ? '✓ Done!' : 'Notify me' }}
+    </button>
+  </form>
+
+  <div class="social" aria-label="Social media links">
+    <a class="social__link" href="https://linkedin.com/company/zellavora" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+    <a class="social__link" href="https://twitter.com/zellavora" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+    <a class="social__link" href="mailto:contact@zellavora.com" aria-label="Email us">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <footer>
+    &copy; {{ year }} Zellavora Technologies &mdash;
+    <a href="mailto:contact@zellavora.com">contact&#64;zellavora.com</a>
+  </footer>
+</div>
