@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  maintenanceMode: true,
+  maintenanceMode: false,
   emailjs: {
     publicKey: '_dTIkiVF1c20MHREu',
     serviceId: 'service_8prewle',
