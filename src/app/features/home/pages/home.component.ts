@@ -4,6 +4,7 @@ import { ServicesOverviewComponent } from '../components/services-overview.compo
 import { WhyChooseUsComponent } from '../components/why-choose-us.component';
 import { CaseStudiesComponent } from '../components/case-studies.component';
 import { TechStackComponent } from '../components/tech-stack.component';
+import { HowWeWorkComponent } from '../components/how-we-work.component';
 import { CtaBannerComponent } from '../../../shared/components/cta-banner/cta-banner.component';
 import { SeoService } from '../../../core/services/seo.service';
 import { environment } from '../../../../environments/environment';
@@ -18,6 +19,7 @@ import { TechStack } from '../../../layout/tech-stack/tech-stack';
     WhyChooseUsComponent,
     CaseStudiesComponent,
     // TechStackComponent,
+    HowWeWorkComponent,
     CtaBannerComponent,
     TechStack
   ],
@@ -26,6 +28,7 @@ import { TechStack } from '../../../layout/tech-stack/tech-stack';
     <app-tech-stack />
     <app-services-overview />
     <app-why-choose-us />
+    <app-how-we-work />
     <app-case-studies />
     <!-- <app-tech-stack /> -->
     <app-cta-banner />
