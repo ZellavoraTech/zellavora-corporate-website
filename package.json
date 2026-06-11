@@ -8,8 +8,20 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "npm run build:prod && wrangler pages deploy dist/zellavora/browser --project-name=zellavora-corporate-website",
-    "deploy:preview": "npm run build:prod && wrangler pages deploy dist/zellavora/browser --project-name=zellavora-corporate-website --branch=preview"
+
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami",
+
+    "cf:pages:create": "wrangler pages project create zellavora-corporate-website",
+    "cf:pages:list": "wrangler pages project list",
+
+    "deploy": "npm run build:prod && wrangler pages deploy dist/zellavora/browser --project-name=zellavora-corporate-website --commit-dirty=true",
+    "deploy:preview": "npm run build:prod && wrangler pages deploy dist/zellavora/browser --project-name=zellavora-corporate-website --branch=preview --commit-dirty=true",
+
+    "cf:deployments": "wrangler pages deployment list --project-name=zellavora-corporate-website",
+    "cf:tail": "wrangler pages deployment tail --project-name=zellavora-corporate-website",
+    "cf:secret:put": "wrangler pages secret put",
+    "cf:secret:list": "wrangler pages secret list --project-name=zellavora-corporate-website"
   },
   "private": true,
   "packageManager": "npm@11.9.0",

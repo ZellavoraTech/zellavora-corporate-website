@@ -19,37 +19,67 @@ jobs:
       pull-requests: write
 
     steps:
+      # ── 1. Checkout ───────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ── 2. Node.js + cache ────────────────────────────────────────────────────
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
+      # ── 3. Install dependencies ───────────────────────────────────────────────
       - name: Install dependencies
         run: npm ci
 
+      # ── 4. Build Angular for production ──────────────────────────────────────
       - name: Build
         run: npm run build:prod
+        env:
+          # Cloudflare injects CF_PAGES=1 automatically in dashboard builds.
+          # Set it manually here so environment.prod.ts can detect CI if needed.
+          CF_PAGES: '1'
+          CF_PAGES_BRANCH: ${{ github.head_ref || github.ref_name }}
+          CF_PAGES_COMMIT_SHA: ${{ github.sha }}
 
+      # ── 5. Deploy to Cloudflare Pages ─────────────────────────────────────────
       - name: Deploy to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist/zellavora/browser --project-name=zellavora-corporate-website --commit-dirty=true
+          # wrangler.jsonc already has pages_build_output_dir set;
+          # passing the directory explicitly ensures correctness.
+          command: >
+            pages deploy dist/zellavora/browser
+            --project-name=zellavora-corporate-website
+            --branch=${{ github.head_ref || github.ref_name }}
+            --commit-hash=${{ github.sha }}
+            --commit-message="${{ github.event.head_commit.message || 'PR preview' }}"
+            --commit-dirty=false
 
+      # ── 6. Comment preview URL on PRs ─────────────────────────────────────────
       - name: Comment PR with preview URL
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
+            const deployUrl = '${{ steps.deploy.outputs.deployment-url }}';
+            const aliasUrl  = '${{ steps.deploy.outputs.pages-deployment-alias-url }}';
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀 **Cloudflare Pages Preview deployed!**\n\nPreview URL: ${{ steps.deploy.outputs.deployment-url }}`
-            })
+              body: [
+                '## 🚀 Cloudflare Pages Preview',
+                '',
+                `| | URL |`,
+                `|---|---|`,
+                `| **Deployment** | ${deployUrl} |`,
+                `| **Branch alias** | ${aliasUrl} |`,
+                `| **Commit** | \`${{ github.sha }}\` |`,
+              ].join('\n')
+            });
