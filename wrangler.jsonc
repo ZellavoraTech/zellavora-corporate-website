@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  // ─── Project identity ────────────────────────────────────────────────────────
+  "name": "zellavora-corporate-website",
+
+  // ─── Pages: output directory ─────────────────────────────────────────────────
+  // Angular 17+ outputs to dist/<project>/browser (not dist/<project>)
+  "pages_build_output_dir": "./dist/zellavora/browser",
+
+  // ─── Runtime compatibility ────────────────────────────────────────────────────
+  // Update this date quarterly to get new Cloudflare runtime features
+  "compatibility_date": "2026-06-11",
+  "compatibility_flags": [],
+
+  // ─── Observability ───────────────────────────────────────────────────────────
+  "observability": {
+    "enabled": true
+  }
+}
